@@ -1,0 +1,37 @@
+import {User} from "./githubmodels"
+
+let testuser:User =
+{
+  "login": "sokogou",
+  "id": 101748770,
+  "node_id": "U_kgDOBhCQIg",
+  "avatar_url": "https://avatars.githubusercontent.com/u/101748770?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/sokogou",
+  "html_url": "https://github.com/sokogou",
+  "followers_url": "https://api.github.com/users/sokogou/followers",
+  "following_url": "https://api.github.com/users/sokogou/following{/other_user}",
+  "gists_url": "https://api.github.com/users/sokogou/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/sokogou/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/sokogou/subscriptions",
+  "organizations_url": "https://api.github.com/users/sokogou/orgs",
+  "repos_url": "https://api.github.com/users/sokogou/repos",
+  "events_url": "https://api.github.com/users/sokogou/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/sokogou/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "ΝΙΚΟΛΑΟΣ ΟΙΚΟΝΟΜΟΥ",
+  "company": null,
+  "blog": "",
+  "location": null,
+  "email": null,
+  "hireable": null,
+  "bio": null,
+  "twitter_username": null,
+  "public_repos": 10,
+  "public_gists": 0,
+  "followers": 1,
+  "following": 1,
+  "created_at": "2022-03-16T19:45:18Z",
+  "updated_at": "2022-07-05T22:33:30Z"
+}
