@@ -10,15 +10,15 @@
   <table class="table table-hover text-center">
     <thead>
       <tr >
-        <th>Year</th>
+        <th (click)="SortByYear()" style="cursor: pointer;" >{{sortYear? "Year &#8593;" : "Year &#8595;"}}</th>
         <th>Category</th>
         <th>Laureate</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let prize of filteredPrizes">
-        <td >{{prize.year}}</td>
-        <td >{{prize.category}}</td>
+        <td class="align-middle" >{{prize.year}}</td>
+        <td class="align-middle" >{{prize.category}}</td>
         <td style="width: 400px;">
           <ul *ngIf="prize.laureates && prize.laureates.length;else PrizeMotivation" >
             <li *ngFor="let laureate of prize.laureates">{{ laureate.firstname}} {{ laureate.surname? laureate.surname : " "}}</li>

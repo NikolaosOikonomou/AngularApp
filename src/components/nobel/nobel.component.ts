@@ -13,13 +13,23 @@ export class NobelComponent implements OnInit {
   filteredPrizes!:Array<Prize>;
   distinctCategories!:Array<string>;
   searchCategory!:string;
+  sortYear:boolean = true;
+
   FilterByCategory(){
     this.filteredPrizes = this.prizes;
     if(this.searchCategory){
       this.filteredPrizes = this.filteredPrizes.filter(x=>x.category.toUpperCase().includes(this.searchCategory.toUpperCase()));
     }
-   
-    console.log(this.filteredPrizes);
+  }
+
+  SortByYear(){
+    this.sortYear = !this.sortYear;
+    if(this.sortYear){
+      this.filteredPrizes = this.filteredPrizes.sort((a,b)=> a.year > b.year ? -1:1);
+    }
+    else{
+      this.filteredPrizes = this.filteredPrizes.sort((a,b)=> a.year < b.year ? -1:1);
+    }
   }
   
   constructor(private nobelService:NobelService) { }
