@@ -1,8 +1,11 @@
-<
+
 
 <div class="container mt-3">
   <div class="col-3 mb-4">
-    <input  class="form-control" type="text" placeholder="Search Category"/>
+    <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory"  class="form-control" type="text" placeholder="Search Category"/>
+    <datalist id="myList">
+      <option *ngFor="let item of distinctCategories">{{item}}</option>
+    </datalist>
   </div>
   <table class="table table-hover text-center">
     <thead>
@@ -13,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prize of prizes">
+      <tr *ngFor="let prize of filteredPrizes">
         <td >{{prize.year}}</td>
         <td >{{prize.category}}</td>
         <td style="width: 400px;">

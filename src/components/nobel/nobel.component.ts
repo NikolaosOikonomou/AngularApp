@@ -10,13 +10,28 @@ import { NobelService } from './nobel.service';
 export class NobelComponent implements OnInit {
 
   prizes!:Array<Prize>;
+  filteredPrizes!:Array<Prize>;
+  distinctCategories!:Array<string>;
+  searchCategory!:string;
+  FilterByCategory(){
+    this.filteredPrizes = this.prizes;
+    if(this.searchCategory){
+      this.filteredPrizes = this.filteredPrizes.filter(x=>x.category.toUpperCase().includes(this.searchCategory.toUpperCase()));
+    }
+   
+    console.log(this.filteredPrizes);
+  }
   
   constructor(private nobelService:NobelService) { }
 
   ngOnInit(): void {
    this.nobelService.GetNobel().subscribe(
     {
-      next: response => this.prizes = response.prizes,
+      next: response => {
+        this.prizes = response.prizes;
+        this.distinctCategories = [...new Set(this.prizes.map(x=>x.category))];
+        this.filteredPrizes = this.prizes;
+      },
       error: err => console.log(err),
       complete: () => console.log("Done")
     });
