@@ -16,7 +16,7 @@ export class NobelComponent implements OnInit {
   ngOnInit(): void {
    this.nobelService.GetNobel().subscribe(
     {
-      next: response => console.log(response),
+      next: response => this.prizes = response.prizes,
       error: err => console.log(err),
       complete: () => console.log("Done")
     });

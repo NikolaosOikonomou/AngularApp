@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class NobelService {
 
-  private URL:string = "http://api.nobelprize.org/v1/prize.json?"
+  private URL:string = "https://api.nobelprize.org/v1/prize.json?"
 
   GetNobel() : Observable<Nobel> {
     return this.httpService.get<Nobel>(this.URL);

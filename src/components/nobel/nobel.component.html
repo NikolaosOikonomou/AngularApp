@@ -1,17 +1,31 @@
-<div class="container mt-5">
+<
+
+<div class="container mt-3">
+  <div class="col-3 mb-4">
+    <input  class="form-control" type="text" placeholder="Search Category"/>
+  </div>
   <table class="table table-hover text-center">
     <thead>
-      <tr>
+      <tr >
         <th>Year</th>
         <th>Category</th>
         <th>Laureate</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1988</td>
-        <td>Gym</td>
-        <td>Nikos</td>
+      <tr *ngFor="let prize of prizes">
+        <td >{{prize.year}}</td>
+        <td >{{prize.category}}</td>
+        <td style="width: 400px;">
+          <ul *ngIf="prize.laureates && prize.laureates.length;else PrizeMotivation" >
+            <li *ngFor="let laureate of prize.laureates">{{ laureate.firstname}} {{ laureate.surname? laureate.surname : " "}}</li>
+          </ul>
+          <ng-template #PrizeMotivation>
+            <ul>
+              <li>{{prize.overallMotivation}}</li>
+            </ul>
+          </ng-template>
+        </td>
       </tr>
     </tbody>
   </table>
