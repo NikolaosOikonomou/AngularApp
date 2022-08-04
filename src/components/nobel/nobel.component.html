@@ -1,27 +1,36 @@
-
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-sm-3">
+      <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory" class="form-control"
+        type="text" placeholder="Search Category"/>
+      <datalist id="myList">
+        <option *ngFor="let item of distinctCategories">{{item}}</option>
+      </datalist>
+    </div>
+    <div *ngIf="searchCategory" class="form-group col-sm-1 ">
+      <input (click)="ShowClearBtn()" type="button" class="form-control XButton" value="X" />
+    </div>
+  </div>
+</div>
 
 <div class="container mt-3">
-  <div class="col-3 mb-4">
-    <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory"  class="form-control" type="text" placeholder="Search Category"/>
-    <datalist id="myList">
-      <option *ngFor="let item of distinctCategories">{{item}}</option>
-    </datalist>
-  </div>
   <table class="table table-hover text-center">
     <thead>
-      <tr >
-        <th (click)="SortByYear()" style="cursor: pointer;" >{{sortYear? "Year &#8593;" : "Year &#8595;"}}</th>
+      <tr>
+        <th (click)="SortByYear()" style="cursor: pointer;">{{sortYear? "Year &#8593;" : "Year &#8595;"}}</th>
         <th>Category</th>
         <th>Laureate</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let prize of filteredPrizes">
-        <td class="align-middle" >{{prize.year}}</td>
-        <td class="align-middle" >{{prize.category}}</td>
+        <td class="align-middle">{{prize.year}}</td>
+        <td class="align-middle">{{prize.category}}</td>
         <td style="width: 400px;">
-          <ul *ngIf="prize.laureates && prize.laureates.length;else PrizeMotivation" >
-            <li *ngFor="let laureate of prize.laureates">{{ laureate.firstname}} {{ laureate.surname? laureate.surname : " "}}</li>
+          <ul *ngIf="prize.laureates && prize.laureates.length;else PrizeMotivation">
+            <li *ngFor="let laureate of prize.laureates">{{ laureate.firstname}} {{ laureate.surname? laureate.surname :
+              "
+              "}}</li>
           </ul>
           <ng-template #PrizeMotivation>
             <ul>

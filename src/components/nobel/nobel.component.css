@@ -1,3 +1,13 @@
+.XButton{
+  background-color: #7aaec4;
+  color:#fff;
+}
+
+.XButton:hover{
+  background-color: #6996aa;
+  transition: .4s;
+}
+
 li{
   list-style: none;
 }

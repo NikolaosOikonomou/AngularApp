@@ -31,6 +31,11 @@ export class NobelComponent implements OnInit {
       this.filteredPrizes = this.filteredPrizes.sort((a,b)=> a.year < b.year ? -1:1);
     }
   }
+
+  ShowClearBtn(){
+    this.searchCategory ='';
+    this.ngOnInit();
+  }
   
   constructor(private nobelService:NobelService) { }
 
