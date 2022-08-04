@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Nobel,Prize } from './nobelModel';
+import { Prize } from './nobelModel';
 import { NobelService } from './nobel.service';
 
 @Component({
@@ -14,6 +14,8 @@ export class NobelComponent implements OnInit {
   distinctCategories!:Array<string>;
   searchCategory!:string;
   sortYear:boolean = true;
+  errorMessage:string | undefined;
+  showLoadingSpinner:boolean = false;
 
   FilterByCategory(){
     this.filteredPrizes = this.prizes;
@@ -40,14 +42,16 @@ export class NobelComponent implements OnInit {
   constructor(private nobelService:NobelService) { }
 
   ngOnInit(): void {
-   this.nobelService.GetNobel().subscribe(
+    this.errorMessage = undefined;
+    this.showLoadingSpinner = true;
+    this.nobelService.GetNobel().subscribe(
     {
       next: response => {
         this.prizes = response.prizes;
         this.distinctCategories = [...new Set(this.prizes.map(x=>x.category))];
         this.filteredPrizes = this.prizes;
       },
-      error: err => console.log(err),
+      error: error => {this.errorMessage = `Opps Something went wrong, Error: ${error.status}`,this.showLoadingSpinner = false},
       complete: () => console.log("Done")
     });
   }

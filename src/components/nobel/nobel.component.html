@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row mt-5 mb-5">
     <div class="col-sm-3">
-      <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory" class="form-control"
-        type="text" placeholder="Search Category"/>
+      <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory" class="form-control" type="text"
+        placeholder="Search Category" />
       <datalist id="myList">
         <option *ngFor="let item of distinctCategories">{{item}}</option>
       </datalist>
@@ -23,6 +23,7 @@
       </tr>
     </thead>
     <tbody>
+
       <tr *ngFor="let prize of filteredPrizes">
         <td class="align-middle">{{prize.year}}</td>
         <td class="align-middle">{{prize.category}}</td>
@@ -41,4 +42,11 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="errorMessage" class="text-center">
+    <h4>{{errorMessage}}</h4>
+  </div>
+  <div *ngIf="showLoadingSpinner" class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+    </div>
+  </div>
 </div>

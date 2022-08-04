@@ -1,6 +1,6 @@
 <div class="d-flex container-fluid col-3 mt-5">
   <input [(ngModel)]="searchName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-  
+
   <button (click)="OnGetUserHandler()" class="btn btn-outline-info" type="submit">Search</button>
 
 </div>
@@ -19,22 +19,28 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{user.login}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.public_repos}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.followers}}</td>
-          <td>{{user.following}}</td>
+          <td>{{user?.login}}</td>
+          <td>{{user?.name}}</td>
+          <td>{{user?.public_repos}}</td>
+          <td>{{user?.email}}</td>
+          <td>{{user?.followers}}</td>
+          <td>{{user?.following}}</td>
         </tr>
       </tbody>
 
     </table>
-   
+
     <br />
-    <div *ngIf="user.avatar_url">
+    <div *ngIf="user?.avatar_url">
       <div><b>User's Photo:</b></div>
-      <img class="myImg mt-2" [src]="user.avatar_url" />
+      <img class="myImg mt-2" [src]="user?.avatar_url" />
     </div>
-    
+    <div *ngIf="errorMessage">
+      <h4>{{errorMessage}}</h4>
+    </div>
+    <div *ngIf="showLoadingSpinner" class="d-flex justify-content-center">
+      <div class="spinner-border text-info" role="status">
+      </div>
+    </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Nobel,Prize } from './nobelModel';
+import { Nobel } from './nobelModel';
 import { Observable } from 'rxjs';
 
 @Injectable({
