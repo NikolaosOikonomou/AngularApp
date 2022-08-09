@@ -1,25 +1,32 @@
 <div class="top-bar">
   <div class="container">
     <div class="text-end">
-      <p >{{time | date}}</p>
+      <p>{{time | date}}</p>
     </div>
   </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container ">
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
     <a class="navbar-brand "><img style="height: 50px;" src="../assets/rainbowLogo.png" alt="Logo" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+    <button class="navbar-toggler" 
+    type="button" 
+    (click)="toggleCollapse()"
+    data-bs-toggle="collapse" 
+    data-bs-target="#navbarResponsive"
+    aria-expanded="false" 
+    aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarResponsive" [class.collapse]="isCollapsed">
       <ul class="navbar-nav ms-auto ">
-        <li class="nav-item"><a class="nav-link mx-5" routerLink="/GitHub">GitHub</a></li>
-        <li class="nav-item "><a class="nav-link myItem" routerLink="/Nobel">Nobel</a></li>
+        <li class="nav-item"><a class="nav-link " routerLink="/GitHub">GitHub</a></li>
+        <li class="nav-item"><a class="nav-link myItem" routerLink="/Nobel">Nobel</a></li>
       </ul>
     </div>
 
   </div>
- 
+
 </nav>
 <div class="">
   <router-outlet></router-outlet>

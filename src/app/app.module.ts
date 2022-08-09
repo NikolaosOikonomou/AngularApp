@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NobelComponent } from '../components/nobel/nobel.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
