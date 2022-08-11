@@ -13,6 +13,7 @@
   </div>
 </div>
 
+
 <div class="container mt-3">
   <table class="table table-hover text-center">
     <thead>
@@ -24,7 +25,13 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let prize of filteredPrizes">
+      <tr *ngFor="let prize of filteredPrizes | paginate
+      : {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        };
+       let i = index">
         <td class="align-middle">{{prize.year}}</td>
         <td class="align-middle">{{prize.category}}</td>
         <td style="width: 400px;">
@@ -47,6 +54,24 @@
   </div>
   <div *ngIf="showLoadingSpinner" class="d-flex justify-content-center">
     <div class="spinner-border text-info" role="status">
+    </div>
+  </div>
+  <div>
+    
+  </div>
+  <div class="row my-3">
+    <div class="text-end col-11">
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+    <div class="text-end col-sm-1">
+      <select class="form-select form-select-sm text-start" (click)="onTableSizeChange($event)">
+        <option *ngFor="let count of tableSizes" >{{count}}</option>
+      </select>
     </div>
   </div>
 </div>
