@@ -26,7 +26,7 @@ export class NobelComponent implements OnInit {
     this.filteredPrizes = this.prizes;
     if(this.searchCategory){
       this.filteredPrizes = this.filteredPrizes.filter(x=>x.category.toUpperCase().includes(this.searchCategory.toUpperCase()));
-      
+      this.page = 1;
     }
   }
 
@@ -42,7 +42,7 @@ export class NobelComponent implements OnInit {
 
   ShowClearBtn(){
     this.searchCategory ='';
-    this.ngOnInit();
+    this.OnGetNoblePrizesHandler();
   }
 
   onTableDataChange(event: any){
@@ -56,10 +56,8 @@ export class NobelComponent implements OnInit {
     this.page = 1;
     this.FilterByCategory();
   }
-  
-  constructor(private nobelService:NobelService) { }
 
-  ngOnInit(): void {
+  OnGetNoblePrizesHandler(){
     this.errorMessage = undefined;
     this.showLoadingSpinner = true;
     this.nobelService.GetNobel().subscribe(
@@ -72,6 +70,12 @@ export class NobelComponent implements OnInit {
       error: error => {this.errorMessage = `Opps Something went wrong, Error: ${error.status}`,this.showLoadingSpinner = false},
       complete: () => this.showLoadingSpinner = false
     });
+  }
+  
+  constructor(private nobelService:NobelService) { }
+
+  ngOnInit(): void {
+   this.OnGetNoblePrizesHandler();
   }
 
 }
