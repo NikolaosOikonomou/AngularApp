@@ -47,12 +47,12 @@ export class NobelComponent implements OnInit {
 
   onTableDataChange(event: any){
     this.page = event;
-    this.FilterByCategory();
+    //this.FilterByCategory();
   }
 
   onTableSizeChange(event: any): void{
     this.tableSize = event.target.value;
-    
+    console.log(event);
     this.page = 1;
     this.FilterByCategory();
   }

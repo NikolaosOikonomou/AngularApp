@@ -2,7 +2,7 @@
   <div class="row mt-5 mb-5">
     <div class="col-sm-3">
       <input list="myList" (input)="FilterByCategory()" [(ngModel)]="searchCategory" class="form-control" type="text"
-        placeholder="Search Category" />
+        placeholder="Search Category"/>
       <datalist id="myList">
         <option *ngFor="let item of distinctCategories">{{item}}</option>
       </datalist>
